@@ -1,4 +1,4 @@
-module github.com/ManizhaM/stats
+module github.com/ManizhaM/stats/v2
 
 go 1.17
 
