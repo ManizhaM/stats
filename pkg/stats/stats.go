@@ -1,14 +1,16 @@
 package stats
 
-import 	"github.com/ManizhaM/bank/pkg/types"
+import 	"github.com/ManizhaM/bank/v2/pkg/types"
 
 //Avg Рассчитывает среднюю сумму платежа
 func Avg(payments []types.Payment) types.Money{
 	var sum types.Money = 0 
 	count := 0 
 	for _, payment := range payments {
+		if(payment.Status != types.StatusFail){
 		sum += payment.Amount 
 		count++;
+		}
 	}
 	sum = sum/types.Money(count)
 	return sum
@@ -18,7 +20,7 @@ func Avg(payments []types.Payment) types.Money{
 func TotalInCategory(payments []types.Payment, category types.Category) types.Money{
 	var sum types.Money = 0
 	for _, payment := range payments {
-		if(payment.Category == category){
+		if(payment.Category == category && payment.Status != types.StatusFail){
 			sum+=payment.Amount
 		}
 	}

@@ -2,7 +2,7 @@ package stats
 
 import (
 	"fmt"
-	"github.com/ManizhaM/bank/pkg/types"
+	"github.com/ManizhaM/bank/v2/pkg/types"
 )
 
 
@@ -11,12 +11,15 @@ func ExampleAvg() {
 	payments := []types.Payment{
 		{
 			Amount:1000,
+			Status: types.StatusFail,
 		},
 		{
 			Amount:2000,
+			Status: types.StatusOk,
 		},
 		{
 			Amount:3000,
+			Status: types.StatusFail,
 		},
 	}
 	fmt.Println(Avg(payments))
@@ -30,14 +33,17 @@ func ExampleTotalInCategory(){
 		{
 			Amount:1000,
 			Category: "car",
+			Status: types.StatusOk,
 		},
 		{
 			Amount:2000,
 			Category: "dress",
+			Status: types.StatusOk,
 		},
 		{
 			Amount:3000,
 			Category: "dress",
+			Status: types.StatusFail,
 		},
 	}
 	fmt.Println(TotalInCategory(payments, "car"))
